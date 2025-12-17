@@ -1,69 +1,43 @@
 // backend/controllers/soalController.js
-const fs = require("fs");
 const path = require("path");
 
-// --- SETUP PATH FILE ---
-// Kita tentukan di mana file soal dan file nilai disimpan
-const soalPath = path.join(__dirname, "../data/soal.json");
-const perfPath = path.join(__dirname, "../data/performances.json");
+// 1. Panggil Model MongoDB yang baru dibuat
+const Performance = require('../models/Performance'); 
 
-// Helper: Baca File Soal dengan Aman
-const loadSoal = () => {
-  try {
-    const raw = fs.readFileSync(soalPath, "utf-8");
-    return JSON.parse(raw);
-  } catch (err) {
-    console.error("Gagal baca soal.json:", err);
-    return { soal: [] }; // Return kosong biar gak crash
-  }
-};
+// Load Soal dari file JSON 
+// (Untuk MEMBACA data, cara ini AMAN dan BOLEH di Vercel)
+let dataSoal;
+try {
+  dataSoal = require("../data/soal.json");
+} catch (err) {
+  dataSoal = { soal: [] };
+}
 
-// Helper: Baca File Performance (Nilai)
-const loadPerf = () => {
-  try {
-    if (!fs.existsSync(perfPath)) {
-      // Kalau file belum ada, kita anggap kosong
-      return { performances: [] };
-    }
-    return JSON.parse(fs.readFileSync(perfPath, "utf-8"));
-  } catch (err) {
-    return { performances: [] };
-  }
-};
-
-// --- 1. AMBIL SOAL (GET) ---
+// --- BAGIAN 1: AMBIL SOAL (Tetap sama, aman) ---
 exports.getSoal = (req, res) => {
   const materiId = parseInt(req.params.materiId);
-  const data = loadSoal();
-
-  // Handle struktur JSON temanmu (kadang pakai 'soal', kadang array langsung)
-  const listSoal = data.soal || data.materi || data; 
-
-  // Cari materi/level berdasarkan ID
+  // Cek struktur JSON, handle berbagai kemungkinan struktur
+  const listSoal = dataSoal.soal || dataSoal.materi || dataSoal; 
+  
   const materiFound = Array.isArray(listSoal) ? listSoal.find(m => m.id === materiId) : null;
 
-  if (!materiFound) {
-    // Fallback: Coba cari di root jika struktur berbeda
-    return res.status(404).json({ message: "Materi tidak ditemukan" });
-  }
-
-  // Kirim isinya (array pertanyaan)
+  if (!materiFound) return res.status(404).json({ message: "Materi tidak ditemukan" });
   res.json(materiFound.soal);
 };
 
-// --- 2. CEK JAWABAN (SUBMIT) ---
+// --- BAGIAN 2: CEK JAWABAN (Tetap sama, logic saja) ---
 exports.submitSoal = (req, res) => {
   const materiId = parseInt(req.params.materiId);
   const jawabanUser = req.body.jawaban; 
-
-  const data = loadSoal();
-  const listSoal = data.soal || data.materi || data;
-  const materiFound = listSoal.find(m => m.id === materiId);
+  
+  const listSoal = dataSoal.soal || dataSoal.materi || dataSoal;
+  const materiFound = Array.isArray(listSoal) ? listSoal.find(m => m.id === materiId) : null;
 
   if (!materiFound) return res.status(404).json({ message: "Materi tidak ditemukan" });
 
   let score = 0;
   materiFound.soal.forEach(item => {
+    // Pastikan jawabanUser ada isinya untuk nomor tersebut
     if (jawabanUser[item.nomor] && jawabanUser[item.nomor].toUpperCase() === item.jawaban.toUpperCase()) {
       score++;
     }
@@ -72,40 +46,31 @@ exports.submitSoal = (req, res) => {
   res.json({ total: materiFound.soal.length, benar: score });
 };
 
-// --- 3. SIMPAN PROGRESS (INI YANG WAJIB ADA) ---
-exports.saveProgress = (req, res) => {
-  // Ambil data yang dikirim dari Frontend
-  const { user_id, question_id, is_correct, difficulty, time_taken } = req.body;
-
-  console.log("Menerima data save:", req.body); // Cek di terminal backend
-
-  // 1. Baca data lama
-  const dataPerf = loadPerf();
-  
-  // 2. Siapkan data baru
-  const newEntry = {
-    user_id: user_id || 1, // Default user 1
-    question_id: question_id,
-    material_id: 1, // Default materi 1
-    difficulty: difficulty || "MEDIUM",
-    response_time: time_taken || 0,
-    is_correct: is_correct,
-    error_type: is_correct ? null : "general_error",
-    timestamp: new Date().toISOString()
-  };
-
-  // 3. Masukkan ke array
-  if (!dataPerf.performances) {
-    dataPerf.performances = [];
-  }
-  dataPerf.performances.push(newEntry);
-
-  // 4. Tulis balik ke file (Simpan Permanen)
+// --- BAGIAN 3: SIMPAN PROGRESS (INI YANG KITA PERBAIKI) ---
+// Kita ubah jadi ASYNC karena database butuh waktu
+exports.saveProgress = async (req, res) => {
   try {
-    fs.writeFileSync(perfPath, JSON.stringify(dataPerf, null, 2));
-    res.json({ success: true, message: "Progress berhasil disimpan!", data: newEntry });
-  } catch (err) {
-    console.error("Gagal nulis file:", err);
-    res.status(500).json({ success: false, message: "Gagal menyimpan ke server." });
+    const { user_id, question_id, is_correct, difficulty, time_taken } = req.body;
+
+    // Siapkan data untuk MongoDB
+    const newEntry = new Performance({
+      user_id: user_id || 1, 
+      question_id: question_id,
+      material_id: 1, 
+      difficulty: difficulty || "MEDIUM",
+      response_time: time_taken || 0,
+      is_correct: is_correct
+      // Timestamp otomatis dibuat oleh MongoDB (default: Date.now)
+    });
+
+    // SIMPAN KE MONGODB ATLAS (CLOUD)
+    const hasilSimpan = await newEntry.save();
+
+    console.log("✅ Progress berhasil disimpan ke MongoDB Atlas!");
+    res.json({ success: true, message: "Progress saved!", data: hasilSimpan });
+
+  } catch (error) {
+    console.error("❌ Gagal simpan ke database:", error);
+    res.status(500).json({ success: false, message: error.message });
   }
 };

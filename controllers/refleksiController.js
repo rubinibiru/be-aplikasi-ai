@@ -1,21 +1,29 @@
-// controllers/refleksiController.js
+// backend/controllers/refleksiController.js
 const { analyzePerformance } = require('./ailogic');
-const fs = require('fs');
-const path = require('path');
+const storage = require('../storage'); // <--- Panggil Kotak Penyimpanan yang SAMA
 
 exports.getReflection = (req, res) => {
   const user_id = Number(req.params.user_id);
 
-  const data = fs.readFileSync(path.join(__dirname, '../data/performances.json'), 'utf8');
-  const performances = JSON.parse(data).performances || [];
+  // --- AMBIL DATA DARI KOTAK PENYIMPANAN ---
+  const performances = storage.performances;
+  // -----------------------------------------
+
+  console.log("Mengecek refleksi untuk user:", user_id);
+  console.log("Total data performance tersedia:", performances.length);
 
   const userPerformances = performances.filter(p => p.user_id === user_id);
-
   const total = userPerformances.length;
   const benar = userPerformances.filter(p => p.is_correct).length;
   const salah = total - benar;
 
-  const analysis = analyzePerformance(user_id, userPerformances);
+  // AI Logic (Bungkus try-catch biar gak crash kalau file AI error)
+  let analysis = { recommendation: "Latihan terus ya!" };
+  try {
+      if (analyzePerformance) {
+        analysis = analyzePerformance(user_id, userPerformances);
+      }
+  } catch (e) { console.log("AI Skip"); }
 
   // Refleksi per materi
   const materiIds = [...new Set(userPerformances.map(p => p.material_id))];
@@ -23,17 +31,9 @@ exports.getReflection = (req, res) => {
     const perfMateri = userPerformances.filter(p => p.material_id === mid);
     const benarMateri = perfMateri.filter(p => p.is_correct).length;
     const salahMateri = perfMateri.length - benarMateri;
-
-    let rekomendasiMateri = '';
-    const avgTime = perfMateri.reduce((sum, p) => sum + p.response_time, 0) / perfMateri.length;
-    if (avgTime > 60) {
-      rekomendasiMateri = 'Waktu pengerjaan lama, latihan lebih banyak.';
-    } else if (salahMateri > 2) {
-      rekomendasiMateri = 'Banyak kesalahan, pelajari materi ulang.';
-    } else {
-      rekomendasiMateri = 'Performa baik, bisa lanjut ke soal lebih sulit.';
-    }
-
+    
+    let rekomendasiMateri = salahMateri > 2 ? 'Pelajari ulang.' : 'Lanjut materi sulit.';
+    
     return {
       material_id: mid,
       total: perfMateri.length,
