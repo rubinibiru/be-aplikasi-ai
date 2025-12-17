@@ -1,29 +1,56 @@
-// index.js
+// backend/index.js (VERSI ANTI-CRASH / STABIL)
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose'); // Pastikan baris ini ada
-const app = express();
+const mongoose = require('mongoose');
 
-// --- BAGIAN CORS (PENTING) ---
-app.use(cors()); 
+const app = express();
+app.use(cors());
 app.use(express.json());
-// Tambahkan ini supaya kalau dibuka link utamanya, muncul tulisan
-app.get('/', (req, res) => {
-    res.send('Server Backend Aman Jaya! 🚀');
-});
+
 // ==========================================
-// --- BAGIAN DATABASE (TAMBAHAN BARU) ---
+// --- KONFIGURASI DATABASE PINTAR ---
 // ==========================================
 const mongoString = "mongodb+srv://ainayahalfatihah2004_db_user:ebOIJsyNW9BxqN7n@cluster0.vgu1anq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
-mongoose.connect(mongoString)
-  .then(() => console.log('✅ BERHASIL KONEK KE DATABASE MONGODB'))
-  .catch((err) => console.log('❌ GAGAL KONEK:', err));
+// Fungsi Koneksi Cerdas (Mencegah Timeout di Vercel)
+const connectDB = async () => {
+  // Cek status dulu: 0=mati, 1=nyala, 2=lagi loading
+  if (mongoose.connection.readyState === 1) {
+    console.log("⚡ Menggunakan koneksi database yang sudah ada.");
+    return;
+  }
+
+  try {
+    await mongoose.connect(mongoString, {
+      serverSelectionTimeoutMS: 5000, // Maksimal nunggu 5 detik
+      socketTimeoutMS: 45000, // Timeout socket
+    });
+    console.log('✅ BERHASIL KONEK KE DATABASE MONGODB BARU');
+  } catch (err) {
+    console.error('❌ GAGAL KONEK:', err);
+    // Kita tidak throw error supaya server tidak crash total
+  }
+};
+
+// Middleware: Pastikan database nyala sebelum memproses request apapun
+app.use(async (req, res, next) => {
+  await connectDB();
+  next();
+});
+
 // ==========================================
+// --- ROUTE UTAMA ---
+// ==========================================
+
+// Route Cek Status Server
+app.get('/', (req, res) => {
+  const statusDB = mongoose.connection.readyState === 1 ? '✅ DB Konek' : '❌ DB Mati';
+  res.send(`Server Backend Aman Jaya! 🚀 Status: ${statusDB}`);
+});
 
 const refleksiRoutes = require('./routes/refleksiRoutes');
 
-// Import data JSON (Untuk materi aman pakai JSON karena cuma dibaca/read)
+// Import data JSON (Materi aman dibaca dari file lokal)
 const dataMateri = require('./data/materi.json'); 
 const materi = dataMateri.materi || dataMateri;
 
@@ -57,6 +84,6 @@ app.use('/ai', aiRoutes);
 app.use('/user', userRoutes);
 app.use('/refleksi', refleksiRoutes);
 
-// Jalankan server (Ganti ke process.env.PORT supaya aman di Vercel)
+// Jalankan server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server berjalan di http://localhost:${PORT}`));
