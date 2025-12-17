@@ -7,7 +7,10 @@ const app = express();
 // --- BAGIAN CORS (PENTING) ---
 app.use(cors()); 
 app.use(express.json());
-
+// Tambahkan ini supaya kalau dibuka link utamanya, muncul tulisan
+app.get('/', (req, res) => {
+    res.send('Server Backend Aman Jaya! 🚀');
+});
 // ==========================================
 // --- BAGIAN DATABASE (TAMBAHAN BARU) ---
 // ==========================================

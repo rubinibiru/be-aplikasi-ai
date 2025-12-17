@@ -1,53 +1,43 @@
 // backend/controllers/refleksiController.js
-const { analyzePerformance } = require('./ailogic');
-const storage = require('../storage'); // <--- Panggil Kotak Penyimpanan yang SAMA
+const Refleksi = require('../models/Refleksi');
 
-exports.getReflection = (req, res) => {
-  const user_id = Number(req.params.user_id);
+// 1. AMBIL REFLEKSI (GET)
+exports.getReflection = async (req, res) => {
+    try {
+        const { user_id } = req.params;
+        
+        // Cari di database MongoDB berdasarkan user_id
+        // .sort({ tanggal: -1 }) artinya yang paling baru muncul duluan
+        const dataRefleksi = await Refleksi.find({ user_id }).sort({ tanggal: -1 });
 
-  // --- AMBIL DATA DARI KOTAK PENYIMPANAN ---
-  const performances = storage.performances;
-  // -----------------------------------------
+        // Kalau kosong, kembalikan array kosong (biar frontend gak error)
+        if (!dataRefleksi) {
+            return res.json([]);
+        }
 
-  console.log("Mengecek refleksi untuk user:", user_id);
-  console.log("Total data performance tersedia:", performances.length);
+        res.json(dataRefleksi);
+    } catch (error) {
+        console.error("Error ambil refleksi:", error);
+        res.status(500).json({ message: "Gagal mengambil data refleksi" });
+    }
+};
 
-  const userPerformances = performances.filter(p => p.user_id === user_id);
-  const total = userPerformances.length;
-  const benar = userPerformances.filter(p => p.is_correct).length;
-  const salah = total - benar;
+// 2. SIMPAN REFLEKSI BARU (POST) - Tambahan Penting!
+exports.saveReflection = async (req, res) => {
+    try {
+        const { user_id, isi_refleksi, materi_id } = req.body;
 
-  // AI Logic (Bungkus try-catch biar gak crash kalau file AI error)
-  let analysis = { recommendation: "Latihan terus ya!" };
-  try {
-      if (analyzePerformance) {
-        analysis = analyzePerformance(user_id, userPerformances);
-      }
-  } catch (e) { console.log("AI Skip"); }
+        const dataBaru = new Refleksi({
+            user_id: user_id || "1", // Default user 1 kalau gak ada
+            materi_id: materi_id || "1",
+            isi_refleksi: isi_refleksi
+        });
 
-  // Refleksi per materi
-  const materiIds = [...new Set(userPerformances.map(p => p.material_id))];
-  const refleksiPerMateri = materiIds.map(mid => {
-    const perfMateri = userPerformances.filter(p => p.material_id === mid);
-    const benarMateri = perfMateri.filter(p => p.is_correct).length;
-    const salahMateri = perfMateri.length - benarMateri;
-    
-    let rekomendasiMateri = salahMateri > 2 ? 'Pelajari ulang.' : 'Lanjut materi sulit.';
-    
-    return {
-      material_id: mid,
-      total: perfMateri.length,
-      benar: benarMateri,
-      salah: salahMateri,
-      rekomendasi: rekomendasiMateri
-    };
-  });
-
-  res.json({
-    total_soal: total,
-    jawaban_benar: benar,
-    jawaban_salah: salah,
-    recommendation: analysis.recommendation,
-    refleksi_per_materi: refleksiPerMateri
-  });
+        const hasil = await dataBaru.save();
+        
+        res.json({ success: true, data: hasil });
+    } catch (error) {
+        console.error("Error simpan refleksi:", error);
+        res.status(500).json({ message: "Gagal menyimpan refleksi" });
+    }
 };
