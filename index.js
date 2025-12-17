@@ -23,7 +23,9 @@ const userRoutes = require('./routes/userRoutes');
 
 // Import Route Soal BARU
 const soalRoutes = require('./routes/soalRoutes'); 
-
+app.get('/materi', (req, res) => {
+  res.json(materi);
+});
 // --- Route materi ---
 app.get('/materi/:id', (req, res) => {
   const id = Number(req.params.id);
