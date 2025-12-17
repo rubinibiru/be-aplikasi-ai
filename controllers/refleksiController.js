@@ -2,7 +2,7 @@
 const Refleksi = require('../models/Refleksi');
 const Performance = require('../models/Performance');
 
-// 1. AMBIL REFLEKSI (Tetap sama)
+// 1. AMBIL REFLEKSI (Teks)
 exports.getReflection = async (req, res) => {
     try {
         const { user_id } = req.params;
@@ -13,7 +13,7 @@ exports.getReflection = async (req, res) => {
     }
 };
 
-// 2. SIMPAN REFLEKSI (Tetap sama)
+// 2. SIMPAN REFLEKSI (Teks)
 exports.saveReflection = async (req, res) => {
     try {
         const { user_id, isi_refleksi, materi_id } = req.body;
@@ -29,26 +29,34 @@ exports.saveReflection = async (req, res) => {
     }
 };
 
-// 3. AMBIL PROGRESS (EDISI MANIPULASI USER ID) 
-// Supaya frontend mau menampilkan data
+// 3. AMBIL PROGRESS (VERSI JUJUR & FINAL)
+// Tidak ada lagi "Sulap" data di sini.
+// backend/controllers/refleksiController.js
+
+// ... kode atas biarkan ...
+
 exports.getUserProgress = async (req, res) => {
     try {
-        // Ambil User ID yang diminta Frontend (misal: 2)
-        const requestedUserId = parseInt(req.params.user_id) || 1;
+        // 1. Tangkap ID dari Frontend
+        // (Pastikan di database user_id tipenya Number/Int. Kalau String, hapus parseInt)
+        const requestedUserId = parseInt(req.params.user_id);
 
-        // Ambil SEMUA data dari database (lean() supaya gampang diedit)
-        const allData = await Performance.find().lean();
-        
-        // --- TRIK AJAIB DI SINI ---
-        // Kita paksa ubah user_id semua data menjadi sesuai permintaan Frontend
-        const manipulatedData = allData.map(item => ({
-            ...item,
-            user_id: requestedUserId // Ubah jadi ID peminta (misal: 2)
-        }));
+        console.log(`🔍 Checking Database for User ID: ${requestedUserId}`);
 
-        console.log(`✅ Mengirim ${manipulatedData.length} data yang disulap jadi User ${requestedUserId}`);
+        // 2. QUERY DATABASE (INI KUNCINYA!)
+        // ❌ SALAH: await Performance.find();  <-- Ini mengambil SEMUA data orang
+        // ✅ BENAR: await Performance.find({ user_id: requestedUserId }); <-- Filter punya dia saja
         
-        res.json(manipulatedData);
+        const progressData = await Performance.find({ user_id: requestedUserId });
+
+        // Cek apakah data user lain ikut masuk?
+        // Kita filter manual lagi di sini buat jaga-jaga (Double Protection)
+        const finalData = progressData.filter(item => item.user_id === requestedUserId);
+        
+        console.log(`✅ Ditemukan ${finalData.length} data murni milik User ${requestedUserId}`);
+        
+        res.json(finalData);
+
     } catch (error) {
         console.error("Error ambil progress:", error);
         res.status(500).json({ message: error.message });
