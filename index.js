@@ -1,4 +1,4 @@
-// backend/index.js (VERSI ANTI-CRASH / STABIL)
+// backend/index.js
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -8,82 +8,91 @@ app.use(cors());
 app.use(express.json());
 
 // ==========================================
-// --- KONFIGURASI DATABASE PINTAR ---
+// --- KONEKSI DATABASE "GLOBAL CACHING" ---
 // ==========================================
 const mongoString = "mongodb+srv://ainayahalfatihah2004_db_user:ebOIJsyNW9BxqN7n@cluster0.vgu1anq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
-// Fungsi Koneksi Cerdas (Mencegah Timeout di Vercel)
+// Trik ini mencegah Vercel membuat koneksi ganda (Zombie Connection)
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+
 const connectDB = async () => {
-  // Cek status dulu: 0=mati, 1=nyala, 2=lagi loading
-  if (mongoose.connection.readyState === 1) {
-    console.log("⚡ Menggunakan koneksi database yang sudah ada.");
-    return;
+  if (cached.conn) {
+    console.log("⚡ Memakai koneksi database yang sudah aktif.");
+    return cached.conn;
   }
 
-  try {
-    await mongoose.connect(mongoString, {
-      serverSelectionTimeoutMS: 5000, // Maksimal nunggu 5 detik
-      socketTimeoutMS: 45000, // Timeout socket
+  if (!cached.promise) {
+    const opts = {
+      bufferCommands: false, // Penting: Jangan antri kalau putus, langsung error aja biar jelas
+      serverSelectionTimeoutMS: 5000, // Timeout 5 detik
+      socketTimeoutMS: 45000,
+    };
+
+    console.log("🔄 Membuka koneksi baru ke MongoDB...");
+    cached.promise = mongoose.connect(mongoString, opts).then((mongoose) => {
+      console.log("✅ Database Connected!");
+      return mongoose;
     });
-    console.log('✅ BERHASIL KONEK KE DATABASE MONGODB BARU');
-  } catch (err) {
-    console.error('❌ GAGAL KONEK:', err);
-    // Kita tidak throw error supaya server tidak crash total
   }
+  
+  try {
+    cached.conn = await cached.promise;
+  } catch (e) {
+    cached.promise = null; // Reset kalau gagal biar bisa coba lagi
+    console.error("❌ Gagal Konek:", e);
+    throw e;
+  }
+
+  return cached.conn;
 };
 
-// Middleware: Pastikan database nyala sebelum memproses request apapun
+// Middleware: Pastikan DB Konek sebelum lanjut
 app.use(async (req, res, next) => {
-  await connectDB();
-  next();
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    console.error("Database Error:", error);
+    // Tetap lanjut tapi kasih info error di log, jangan bikin aplikasi crash total
+    res.status(500).json({ message: "Database sedang sibuk, coba refresh.", error: error.message });
+  }
 });
 
 // ==========================================
-// --- ROUTE UTAMA ---
+// --- ROUTES ---
 // ==========================================
 
-// Route Cek Status Server
+// Route Cek Status
 app.get('/', (req, res) => {
-  const statusDB = mongoose.connection.readyState === 1 ? '✅ DB Konek' : '❌ DB Mati';
-  res.send(`Server Backend Aman Jaya! 🚀 Status: ${statusDB}`);
+  res.send(`Server Backend Aman! Status DB: ${cached.conn ? 'Connected' : 'Connecting...'}`);
 });
 
 const refleksiRoutes = require('./routes/refleksiRoutes');
+const aiRoutes = require('./routes/aiRoutes');
+const userRoutes = require('./routes/userRoutes');
+const soalRoutes = require('./routes/soalRoutes'); 
 
-// Import data JSON (Materi aman dibaca dari file lokal)
+// Data Materi (JSON)
 const dataMateri = require('./data/materi.json'); 
 const materi = dataMateri.materi || dataMateri;
 
-// Import route AI & User
-const aiRoutes = require('./routes/aiRoutes');
-const userRoutes = require('./routes/userRoutes');
-
-// Import Route Soal BARU
-const soalRoutes = require('./routes/soalRoutes'); 
-
-// --- Route materi ---
-app.get('/materi', (req, res) => {
-  res.json(materi);
-});
-
+// --- Route Handlers ---
+app.get('/materi', (req, res) => res.json(materi));
 app.get('/materi/:id', (req, res) => {
   const id = Number(req.params.id);
   const item = materi.find(m => Number(m.id) === id);
-
-  if (!item) {
-    return res.status(404).json({ message: 'Materi tidak ditemukan' });
-  }
+  if (!item) return res.status(404).json({ message: 'Materi tidak ditemukan' });
   res.json(item);
 });
 
-// --- Route Soal ---
 app.use('/soal', soalRoutes);
-
-// --- Route Lainnya ---
 app.use('/ai', aiRoutes);
 app.use('/user', userRoutes);
 app.use('/refleksi', refleksiRoutes);
 
-// Jalankan server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server berjalan di http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
