@@ -1,0 +1,1057 @@
+{
+  "soal": [
+    {
+      "id": 0,
+      "nama": "Pengenalan Materi Aljabar Kelas 7",
+      "tingkat_kesulitan": "EASY",
+      "soal": [
+        {
+          "nomor": 1,
+          "pertanyaan": "Manakah yang merupakah variabel?",
+          "pilihan": {
+            "A": "7",
+            "B": "x",
+            "C": "-7x",
+            "D": "2x + 6y"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 2,
+          "pertanyaan": "Manakah yang merupakan koefisien?",
+          "pilihan": {
+            "A": "x pada -3x",
+            "B": "9 pada 9x",
+            "C": "2 pada x^2",
+            "D": "4 pada 3x + 4"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 3,
+          "pertanyaan": "Mana yang merupakan konstanta?",
+          "pilihan": {
+            "A": "5y",
+            "B": "9",
+            "C": "x - 3",
+            "D": "y"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 4,
+          "pertanyaan": "Banyak suku pada bentuk 4x + 2 - y adalah",
+          "pilihan": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "1"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 5,
+          "pertanyaan": "Pada bentuk -3y, variabel yang digunakan adalah",
+          "pilihan": {
+            "A": "-3",
+            "B": "y",
+            "C": "-3y",
+            "D": "x"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 6,
+          "pertanyaan": "Manakah pasangan suku sejenis berikut?",
+          "pilihan": {
+            "A": "2x dan 5y",
+            "B": "3a dan 3b",
+            "C": "4a dan -7a",
+            "D": "x dan x + 1"
+          },
+          "jawaban": "C"
+        },
+        {
+          "nomor": 7,
+          "pertanyaan": "Pada bentuk 10 - 6x, koefisien dari x adalah",
+          "pilihan": {
+            "A": "10",
+            "B": "-6",
+            "C": "6",
+            "D": "-10"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 8,
+          "pertanyaan": "Yang termasuk variabel adalah",
+          "pilihan": {
+            "A": "3",
+            "B": "8",
+            "C": "a",
+            "D": "10"
+          },
+          "jawaban": "C"
+        },
+        {
+          "nomor": 9,
+          "pertanyaan": "Manakah bentuk aljabar yang hanya memiliki satu suku?",
+          "pilihan": {
+            "A": "3x + 2",
+            "B": "-5y",
+            "C": "7 + y",
+            "D": "2x - 3"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 10,
+          "pertanyaan": "Pada bentuk 9p + 1, suku konstantanya adalah…",
+          "pilihan": {
+            "A": "1",
+            "B": "p",
+            "C": "x",
+            "D": "9"
+          },
+          "jawaban": "A"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "nama": "Pengenalan Materi Aljabar Kelas 7",
+      "tingkat_kesulitan": "MEDIUM",
+      "soal": [
+        {
+          "nomor": 1,
+          "pertanyaan": "Pada bentuk 8x - 3y + 12, berapa banyak suku yang ada?",
+          "pilihan": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4"
+          },
+          "jawaban": "C"
+        },
+        {
+          "nomor": 2,
+          "pertanyaan": "Pada bentuk -4a + 7 + 3a, koefisien total dari a adalah",
+          "pilihan": {
+            "A": "-1",
+            "B": "1",
+            "C": "7",
+            "D": "-7"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 3,
+          "pertanyaan": "Pada bentuk 8x - 5 + 10, konstantanya adalah",
+          "pilihan": {
+            "A": "8x",
+            "B": "-5y",
+            "C": "10",
+            "D": "Semua salah"
+          },
+          "jawaban": "C"
+        },
+        {
+          "nomor": 4,
+          "pertanyaan": "Manakah pasangan suku sejenis berikut?",
+          "pilihan": {
+            "A": "3x dan 3x^2",
+            "B": "5y dan -2y",
+            "C": "7a dan 7b",
+            "D": "4m dan 4mn"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 5,
+          "pertanyaan": "Pada bentuk 9p - 4 + 2p - 6, konstanta setelah disederhanakan adalah…",
+          "pilihan": {
+            "A": "-2",
+            "B": "-10",
+            "C": "-4",
+            "D": "10"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 6,
+          "pertanyaan": "Pada bentuk 3x + 5 - 4x + 2, koefisien x setelah disederhanakan adalah…",
+          "pilihan": {
+            "A": "-1",
+            "B": "-7",
+            "C": "1",
+            "D": "3"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 7,
+          "pertanyaan": "Banyak suku pada bentuk yang telah disederhanakan dari 2y + 5 +3y - 5y + 7 adalah…",
+          "pilihan": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 8,
+          "pertanyaan": "Pada bentuk −7k + 9 − k, koefisien dari k adalah …",
+          "pilihan": {
+            "A": "−7",
+            "B": "−8",
+            "C": "8",
+            "D": "7"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 9,
+          "pertanyaan": "Manakah yang merupakan suku tidak sejenis?",
+          "pilihan": {
+            "A": "−3x dan 2x",
+            "B": "x dan x",
+            "C": "5y dan −y",
+            "D": "6a dan 6b"
+          },
+          "jawaban": "D"
+        },
+        {
+          "nomor": 10,
+          "pertanyaan": "Jika 4m − 2 + 3m + 6 disederhanakan, bentuk akhirnya memiliki …",
+          "pilihan": {
+            "A": "1 suku",
+            "B": "2 suku",
+            "C": "3 suku",
+            "D": "4 suku"
+          },
+          "jawaban": "B"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nama": "Pengenalan Materi Aljabar Kelas 7",
+      "tingkat_kesulitan": "HARD",
+      "soal": [
+        {
+          "nomor": 1,
+          "pertanyaan": "Bentuk aljabar berikut yang memiliki 3 suku sejenis adalah …",
+          "pilihan": {
+            "A": "2x + 4y − 6",
+            "B": "3a + 2a − 5a",
+            "C": "5p + 3q − 3",
+            "D": "−x + 2 + xy"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 2,
+          "pertanyaan": "Pada bentuk −8x + 3y − 2x + y − 4, koefisien dari y setelah disederhanakan adalah …",
+          "pilihan": {
+            "A": "4",
+            "B": "−4",
+            "C": "−3",
+            "D": "2"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 3,
+          "pertanyaan": "Manakah bentuk aljabar yang tidak memiliki konstanta?",
+          "pilihan": {
+            "A": "7x − 2x + 5",
+            "B": "−4y + 9",
+            "C": "3a − 3a",
+            "D": "10p − 2"
+          },
+          "jawaban": "C"
+        },
+        {
+          "nomor": 4,
+          "pertanyaan": "Pada bentuk −5k + 2 − 3k + 4 − k, koefisien total dari k adalah …",
+          "pilihan": {
+            "A": "−8",
+            "B": "−9",
+            "C": "−10",
+            "D": "−7"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 5,
+          "pertanyaan": "Banyak suku yang tersisa setelah penyederhanaan 4x − 3 + 6 − 4 + 2x adalah …",
+          "pilihan": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 6,
+          "pertanyaan": "Pernyataan berikut yang benar tentang suku sejenis adalah …",
+          "pilihan": {
+            "A": "Semua suku yang memuat huruf disebut suku sejenis",
+            "B": "Suku dengan variabel sama tetapi pangkat berbeda tetap sejenis",
+            "C": "Suku sejenis dapat digabungkan dengan menjumlahkan koefisiennya",
+            "D": "Konstanta tidak bisa menjadi suku sejenis"
+          },
+          "jawaban": "C"
+        },
+        {
+          "nomor": 7,
+          "pertanyaan": "Pada bentuk 7m − 4 + 2m − 9 + m, nilai konstanta setelah disederhanakan adalah …",
+          "pilihan": {
+            "A": "−3",
+            "B": "−13",
+            "C": "−5",
+            "D": "−4"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 8,
+          "pertanyaan": "Manakah bentuk aljabar yang memiliki koefisien negatif untuk variabelnya?",
+          "pilihan": {
+            "A": "5x + 2",
+            "B": "−3y + 9",
+            "C": "10a − 1 + a",
+            "D": "2y + 5 − y"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 9,
+          "pertanyaan": "Pada bentuk (6p − 2p + p) − (5 − 3), suku yang termasuk variabel setelah disederhanakan adalah …",
+          "pilihan": {
+            "A": "6p",
+            "B": "5p",
+            "C": "4p",
+            "D": "−2p"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 10,
+          "pertanyaan": "Pada bentuk 9x − (4x − 3) + 2, koefisien akhir dari x adalah …",
+          "pilihan": {
+            "A": "9",
+            "B": "5",
+            "C": "−4",
+            "D": "7"
+          },
+          "jawaban": "B"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nama": "Bentuk Formal Aljabar",
+      "tingkat_kesulitan": "EASY",
+      "soal": [
+        {
+          "nomor": 1,
+          "pertanyaan": "Bentuk aljabar dari “lima kali x” adalah …",
+          "pilihan": {
+            "A": "x5",
+            "B": "5x",
+            "C": "x + 5",
+            "D": "5 + x"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 2,
+          "pertanyaan": "Pada bentuk 7y, angka 7 disebut …",
+          "pilihan": {
+            "A": "Variabel",
+            "B": "Koefisien",
+            "C": "Suku",
+            "D": "Konstanta"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 3,
+          "pertanyaan": "Pada bentuk 3a^2, yang menjadi variabel adalah …",
+          "pilihan": {
+            "A": "3",
+            "B": "a^2",
+            "C": "a",
+            "D": "tidak ada"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 4,
+          "pertanyaan": "Mana yang merupakan konstanta?",
+          "pilihan": {
+            "A": "3x",
+            "B": "7",
+            "C": "x",
+            "D": "xy"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 5,
+          "pertanyaan": "Suku sejenis dari 4x adalah …",
+          "pilihan": {
+            "A": "4y",
+            "B": "6x",
+            "C": "x^2",
+            "D": "6"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 6,
+          "pertanyaan": "Sederhanakan 5b + 2b …",
+          "pilihan": {
+            "A": "7b",
+            "B": "3b",
+            "C": "10b",
+            "D": "5b2b"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 7,
+          "pertanyaan": "Banyak suku dari 2x + 3y adalah …",
+          "pilihan": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 8,
+          "pertanyaan": "Harga 1 apel adalah a. Harga 4 apel adalah …",
+          "pilihan": {
+            "A": "a + 4",
+            "B": "a − 4",
+            "C": "4a",
+            "D": "a/4"
+          },
+          "jawaban": "C"
+        },
+        {
+          "nomor": 9,
+          "pertanyaan": "3p − p sama dengan …",
+          "pilihan": {
+            "A": "4p",
+            "B": "3p",
+            "C": "2p",
+            "D": "p"
+          },
+          "jawaban": "C"
+        },
+        {
+          "nomor": 10,
+          "pertanyaan": "Koefisien dari −9x adalah …",
+          "pilihan": {
+            "A": "x",
+            "B": "−9",
+            "C": "9",
+            "D": "−x"
+          },
+          "jawaban": "B"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nama": "Bentuk Formal Aljabar",
+      "tingkat_kesulitan": "MEDIUM",
+      "soal": [
+        {
+          "nomor": 1,
+          "pertanyaan": "Bentuk aljabar “dua kali jumlah x dan 3” adalah …",
+          "pilihan": {
+            "A": "2x + 3",
+            "B": "2(x + 3)",
+            "C": "x + 6",
+            "D": "2x − 3"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 2,
+          "pertanyaan": "Sederhanakan 6m + 3 − 2m …",
+          "pilihan": {
+            "A": "8m + 3",
+            "B": "4m + 3",
+            "C": "4m − 3",
+            "D": "2m + 3"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 3,
+          "pertanyaan": "Pada 3x^2, pangkat variabel adalah …",
+          "pilihan": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "0"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 4,
+          "pertanyaan": "Banyak suku dari 5x − 4 + 3y adalah …",
+          "pilihan": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4"
+          },
+          "jawaban": "C"
+        },
+        {
+          "nomor": 5,
+          "pertanyaan": "Koefisien dari −10a adalah …",
+          "pilihan": {
+            "A": "−10",
+            "B": "10",
+            "C": "a",
+            "D": "−a"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 6,
+          "pertanyaan": "Harga 1 pensil x. Harga 2 buku 3x. Model matematikanya adalah …",
+          "pilihan": {
+            "A": "x + 3x + 2",
+            "B": "x + 6x",
+            "C": "x + 3x",
+            "D": "2 + x + 3x"
+          },
+          "jawaban": "C"
+        },
+        {
+          "nomor": 7,
+          "pertanyaan": "Mana suku sejenis berikut?",
+          "pilihan": {
+            "A": "2x dan 2x^2",
+            "B": "3a dan −5a",
+            "C": "7b dan 7c",
+            "D": "4m dan 4mn"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 8,
+          "pertanyaan": "Sederhanakan 9y − 4y + 2 …",
+          "pilihan": {
+            "A": "13y + 2",
+            "B": "5y + 2",
+            "C": "−5y + 2",
+            "D": "2y + 9"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 9,
+          "pertanyaan": "Pada (4p + 6) − p, bentuk sederhananya adalah …",
+          "pilihan": {
+            "A": "4p − p + 6",
+            "B": "5p + 6",
+            "C": "3p + 6",
+            "D": "p + 6"
+          },
+          "jawaban": "C"
+        },
+        {
+          "nomor": 10,
+          "pertanyaan": "Jumlah 2 apel dan 5 jeruk jika apel = a dan jeruk = j …",
+          "pilihan": {
+            "A": "2a + 5",
+            "B": "2 + 5j",
+            "C": "2a + 5j",
+            "D": "a + j + 7"
+          },
+          "jawaban": "C"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nama": "Bentuk Formal Aljabar",
+      "tingkat_kesulitan": "HARD",
+      "soal": [
+        {
+          "nomor": 1,
+          "pertanyaan": "Sederhanakan 8x + 3 − 2x + x − 6 …",
+          "pilihan": {
+            "A": "7x − 3",
+            "B": "7x + 3",
+            "C": "5x − 3",
+            "D": "7x − 6"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 2,
+          "pertanyaan": "Bentuk aljabar “tiga kurang dari dua kali x” adalah …",
+          "pilihan": {
+            "A": "2x + 3",
+            "B": "3 − 2x",
+            "C": "2x − 3",
+            "D": "3x − 2"
+          },
+          "jawaban": "C"
+        },
+        {
+          "nomor": 3,
+          "pertanyaan": "Manakah yang benar tentang penulisan bentuk aljabar?",
+          "pilihan": {
+            "A": "Variabel ditulis di depan koefisien",
+            "B": "Pangkat ditulis sebelum variabel",
+            "C": "Koefisien ditulis sebelum variabel",
+            "D": "Konstanta harus selalu di belakang"
+          },
+          "jawaban": "C"
+        },
+        {
+          "nomor": 4,
+          "pertanyaan": "Sederhanakan (5k − 7) + (2k − 3) …",
+          "pilihan": {
+            "A": "3k − 4",
+            "B": "7k − 10",
+            "C": "3k + 4",
+            "D": "7k − 4"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 5,
+          "pertanyaan": "Banyak suku setelah menyederhanakan 3x + 4 − 2 + x − 5x adalah …",
+          "pilihan": {
+            "A": "1 suku",
+            "B": "2 suku",
+            "C": "3 suku",
+            "D": "4 suku"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 6,
+          "pertanyaan": "Jika 1 buku = b dan 1 pulpen = p, maka “4 kali buku lebih banyak 2 pulpen” ditulis …",
+          "pilihan": {
+            "A": "4b + 2p",
+            "B": "4b − 2p",
+            "C": "b + p + 2",
+            "D": "2b + 4p"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 7,
+          "pertanyaan": "Bentuk yang tidak memiliki konstanta adalah …",
+          "pilihan": {
+            "A": "5x + 2y",
+            "B": "3a − 3 + a",
+            "C": "7k − 2",
+            "D": "10p + 1"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 8,
+          "pertanyaan": "Sederhanakan (10 − 3x) − (4 − x) …",
+          "pilihan": {
+            "A": "−2x − 6",
+            "B": "−2x + 6",
+            "C": "−3x + x + 6",
+            "D": "−2x + 10"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 9,
+          "pertanyaan": "Mana yang merupakan model matematika dari “jumlah sebuah bilangan dengan bilangan itu dikurangi 5” (bilangan = n)?",
+          "pilihan": {
+            "A": "n + n − 5",
+            "B": "n − 5 + 5",
+            "C": "5 − n + n",
+            "D": "n − 5n"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 10,
+          "pertanyaan": "Hasil penyederhanaan dari −4a + 6 + 3a − 2 adalah …",
+          "pilihan": {
+            "A": "−a + 4",
+            "B": "−a + 8",
+            "C": "−7a + 4",
+            "D": "a + 4"
+          },
+          "jawaban": "A"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "nama": "Operasi Hitung Aljabar",
+      "tingkat_kesulitan": "EASY",
+      "soal": [
+        {
+          "nomor": 1,
+          "pertanyaan": "3x + 2x = …",
+          "pilihan": {
+            "A": "6x",
+            "B": "5x",
+            "C": "3x^2",
+            "D": "x"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 2,
+          "pertanyaan": "7a – 3a = …",
+          "pilihan": {
+            "A": "4a",
+            "B": "5a",
+            "C": "10a",
+            "D": "a^2"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 3,
+          "pertanyaan": "5y + 4 = …",
+          "pilihan": {
+            "A": "9y",
+            "B": "9",
+            "C": "5y + 4",
+            "D": "20y"
+          },
+          "jawaban": "C"
+        },
+        {
+          "nomor": 4,
+          "pertanyaan": "2a × a = …",
+          "pilihan": {
+            "A": "2a",
+            "B": "a^2",
+            "C": "2a^2",
+            "D": "a^3"
+          },
+          "jawaban": "C"
+        },
+        {
+          "nomor": 5,
+          "pertanyaan": "x × x = …",
+          "pilihan": {
+            "A": "x^3",
+            "B": "x^2",
+            "C": "2x",
+            "D": "x"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 6,
+          "pertanyaan": "9b – 2b = …",
+          "pilihan": {
+            "A": "7b",
+            "B": "11b",
+            "C": "b^7",
+            "D": "18b"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 7,
+          "pertanyaan": "Jika x = 4, maka 2x = …",
+          "pilihan": {
+            "A": "6",
+            "B": "8",
+            "C": "2",
+            "D": "10"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 8,
+          "pertanyaan": "a^2 : a = …",
+          "pilihan": {
+            "A": "a^2",
+            "B": "a",
+            "C": "1",
+            "D": "2a"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 9,
+          "pertanyaan": "6p + p = …",
+          "pilihan": {
+            "A": "7p",
+            "B": "6p^2",
+            "C": "p^7",
+            "D": "5p"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 10,
+          "pertanyaan": "Jika x = 5, maka x + 3 = …",
+          "pilihan": {
+            "A": "7",
+            "B": "8",
+            "C": "5",
+            "D": "15"
+          },
+          "jawaban": "B"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "nama": "Operasi Hitung Aljabar",
+      "tingkat_kesulitan": "MEDIUM",
+      "soal": [
+        {
+          "nomor": 1,
+          "pertanyaan": "4x + 3x – x = …",
+          "pilihan": {
+            "A": "8x",
+            "B": "6x",
+            "C": "5x",
+            "D": "7x"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 2,
+          "pertanyaan": "6a – 2a + 5a = …",
+          "pilihan": {
+            "A": "9a",
+            "B": "7a",
+            "C": "11a",
+            "D": "8a"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 3,
+          "pertanyaan": "3y × 2y = …",
+          "pilihan": {
+            "A": "6y^2",
+            "B": "5y",
+            "C": "6y",
+            "D": "3y^2"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 4,
+          "pertanyaan": "x^2 : x = …",
+          "pilihan": {
+            "A": "x²",
+            "B": "x",
+            "C": "2x",
+            "D": "1"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 5,
+          "pertanyaan": "Jika a = 2, maka 3a + 4 = …",
+          "pilihan": {
+            "A": "10",
+            "B": "12",
+            "C": "7",
+            "D": "14"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 6,
+          "pertanyaan": "8m – 5m + 2 = …",
+          "pilihan": {
+            "A": "3m + 2",
+            "B": "3m",
+            "C": "10m + 2",
+            "D": "m + 2"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 7,
+          "pertanyaan": "(2x)(3) = …",
+          "pilihan": {
+            "A": "5x",
+            "B": "6x",
+            "C": "2x + 3",
+            "D": "x^5"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 8,
+          "pertanyaan": "12p + 4 – 3p = …",
+          "pilihan": {
+            "A": "9p + 4",
+            "B": "15p – 4",
+            "C": "8p + 4",
+            "D": "4p + 9"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 9,
+          "pertanyaan": "Jika x = 3, maka 4x – 1 = …",
+          "pilihan": {
+            "A": "11",
+            "B": "12",
+            "C": "9",
+            "D": "10"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 10,
+          "pertanyaan": "5a² : a = …",
+          "pilihan": {
+            "A": "5a",
+            "B": "5a²",
+            "C": "a",
+            "D": "5"
+          },
+          "jawaban": "A"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "nama": "Operasi Hitung Aljabar",
+      "tingkat_kesulitan": "HARD",
+      "soal": [
+        {
+          "nomor": 1,
+          "pertanyaan": "3x + 2y − x + y = …",
+          "pilihan": {
+            "A": "2x + y",
+            "B": "2x + 3y",
+            "C": "x + 3y",
+            "D": "4xy"
+          },
+          "jawaban": "B"
+        },
+        {
+          "nomor": 2,
+          "pertanyaan": "5a × 2a^2 = …",
+          "pilihan": {
+            "A": "10a^3",
+            "B": "7a^2",
+            "C": "5a^3",
+            "D": "10a^2"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 3,
+          "pertanyaan": "Jika y = −2, maka 3y – y^2 = …",
+          "pilihan": {
+            "A": "−10",
+            "B": "−8",
+            "C": "2",
+            "D": "10"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 4,
+          "pertanyaan": "6m^2 : 3m = …",
+          "pilihan": {
+            "A": "2m",
+            "B": "2m^2",
+            "C": "18m^3",
+            "D": "m"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 5,
+          "pertanyaan": "7p – 3p + 4p − p = …",
+          "pilihan": {
+            "A": "7p",
+            "B": "6p",
+            "C": "8p",
+            "D": "10p"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 6,
+          "pertanyaan": "2x^2 + 3x – x^2 + 2 = …",
+          "pilihan": {
+            "A": "x^2 + 3x + 2",
+            "B": "x^2 + 5x",
+            "C": "x^2 + x + 2",
+            "D": "3x^2 + 2"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 7,
+          "pertanyaan": "Jika x = 4, maka 2x^2 − 5x + 1 = …",
+          "pilihan": {
+            "A": "13",
+            "B": "9",
+            "C": "21",
+            "D": "8"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 8,
+          "pertanyaan": "(3a)(2b)(a) = …",
+          "pilihan": {
+            "A": "6a^2 b",
+            "B": "6ab^2",
+            "C": "5ab",
+            "D": "3a^2 b^2"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 9,
+          "pertanyaan": "(x^2 + 2x) : x = …",
+          "pilihan": {
+            "A": "x + 2",
+            "B": "x^2 + 2x",
+            "C": "2x^2",
+            "D": "x^2 − 2"
+          },
+          "jawaban": "A"
+        },
+        {
+          "nomor": 10,
+          "pertanyaan": "−4y^2 + 3y − y^2 = …",
+          "pilihan": {
+            "A": "−5y^2 + 3y",
+            "B": "−3y^2",
+            "C": "−7y^2 + 3y",
+            "D": "−5y + 3y^2"
+          },
+          "jawaban": "A"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "materi": [
+    {
+      "id": 1,
+      "judul": "Pengenalan Materi Aljabar Kelas 7",
+      "konten": [
+        "Aljabar adalah cabang matematika yang diperkenalkan Al-Khawarizmi dimana menggunakan huruf atau variabel untuk mewakili bilangan yang belum diketahui.",
+        "Variabel adalah huruf yang mewakili nilai yang belum diketahui seperti x, y, a, b, c.",
+        "Konstanta adalah bilangan tetap seperti 2, 5, -3.",
+        "Koefisien adalah angka yang mengalikan variabel, contoh: pada 3x koefisien = 3.",
+        "Suku adalah bagian dari bentuk aljabar yang dipisahkan oleh operasi penjumlahan dan pengurangan.",
+        "Suku sejenis adalah suku yang memiliki variabel dan pangkat sama. Contoh sejenis: 3x dan 7x. Contoh tidak sejenis: 3x dan 3y."
+      ]
+    },
+    {
+      "id": 2,
+      "judul": "Bentuk Formal Aljabar",
+      "konten": [
+        "Penulisan bentuk aljabar: koefisien ditulis di depan, variabel ditulis setelah koefisien, pangkat variabel ditulis di akhir. Contoh: 3x^2.",
+        "Menyederhanakan bentuk aljabar dilakukan dengan menggabungkan suku sejenis.",
+        "Contoh: 3x + 4x = 7x dan 5a - 2a + a = 4a.",
+        "Model matematika: masalah sehari-hari dapat dituliskan sebagai aljabar.",
+        "Contoh: harga 1 buku x → harga 3 buku adalah 3x, 3 bola basket a dan 4 bola kasti b ditulis 3a + 4b."
+      ]
+    },
+    {
+      "id": 3,
+      "judul": "Operasi Hitung Aljabar",
+      "konten": [
+        "Penjumlahan bentuk aljabar hanya dilakukan untuk suku sejenis. Contoh: 3x + 5x = 8x.",
+        "Pengurangan juga hanya untuk suku sejenis. Contoh: 7a - 2a = 5a.",
+        "Perkalian variabel: a × a = a² dan a × b = ab.",
+        "Pembagian aljabar dasar: jika variabel sama maka pangkat dikurangi. Contoh: x² : x = x.",
+        "Substitusi adalah mengganti variabel dengan angka → jika x = 3, nilai 2x + 5 = 11."
+      ]
+    }
+  ]
+}

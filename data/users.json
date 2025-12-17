@@ -1,0 +1,33 @@
+[
+  {
+    "id": 1,
+    "username": "siswa1",
+    "password": "password123",
+    "name": "Siswa 1",
+    "level": "Siswa Aktif"
+  },
+  {
+    "id": 2,
+    "username": "devacantik",
+    "password": "123456789",
+    "name": "Deva Cantikk Sekali",
+    "level": "Siswa Baru",
+    "joinedAt": "2025-12-14T09:44:00.784Z"
+  },
+  {
+    "id": 3,
+    "username": "siswa2",
+    "password": "password123",
+    "name": "Siswa Pintar",
+    "level": "Siswa Baru",
+    "joinedAt": "2025-12-14T10:19:45.617Z"
+  },
+  {
+    "id": 4,
+    "username": "siswa3",
+    "password": "password123",
+    "name": "Siswa Cerdas",
+    "level": "Siswa Baru",
+    "joinedAt": "2025-12-14T10:24:18.622Z"
+  }
+]

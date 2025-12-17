@@ -1,0 +1,94 @@
+{
+  "performances": [
+    {
+      "user_id": 2,
+      "question_id": 8,
+      "material_id": 1,
+      "difficulty": "Easy",
+      "response_time": 5,
+      "is_correct": true,
+      "error_type": null,
+      "timestamp": "2025-12-14T10:14:20.209Z"
+    },
+    {
+      "user_id": 2,
+      "question_id": 8,
+      "material_id": 1,
+      "difficulty": "Easy",
+      "response_time": 5,
+      "is_correct": true,
+      "error_type": null,
+      "timestamp": "2025-12-14T10:14:27.888Z"
+    },
+    {
+      "user_id": 2,
+      "question_id": 2,
+      "material_id": 1,
+      "difficulty": "Easy",
+      "response_time": 8,
+      "is_correct": true,
+      "error_type": null,
+      "timestamp": "2025-12-14T10:14:37.855Z"
+    },
+    {
+      "user_id": 2,
+      "question_id": 5,
+      "material_id": 1,
+      "difficulty": "Medium",
+      "response_time": 11,
+      "is_correct": true,
+      "error_type": null,
+      "timestamp": "2025-12-14T10:15:15.143Z"
+    },
+    {
+      "user_id": 2,
+      "question_id": 5,
+      "material_id": 1,
+      "difficulty": "Medium",
+      "response_time": 4,
+      "is_correct": false,
+      "error_type": "general_error",
+      "timestamp": "2025-12-14T10:15:21.690Z"
+    },
+    {
+      "user_id": 2,
+      "question_id": 8,
+      "material_id": 1,
+      "difficulty": "HOTS",
+      "response_time": 5,
+      "is_correct": false,
+      "error_type": "general_error",
+      "timestamp": "2025-12-14T10:18:58.101Z"
+    },
+    {
+      "user_id": 2,
+      "question_id": 7,
+      "material_id": 1,
+      "difficulty": "HOTS",
+      "response_time": 6,
+      "is_correct": true,
+      "error_type": null,
+      "timestamp": "2025-12-14T10:19:06.502Z"
+    },
+    {
+      "user_id": 3,
+      "question_id": 8,
+      "material_id": 1,
+      "difficulty": "Easy",
+      "response_time": 5,
+      "is_correct": false,
+      "error_type": "general_error",
+      "timestamp": "2025-12-14T10:20:13.242Z"
+    },
+    {
+      "user_id": 2,
+      "question_id": 5,
+      "material_id": 1,
+      "difficulty": "HOTS",
+      "response_time": 7,
+      "is_correct": true,
+      "error_type": null,
+      "timestamp": "2025-12-14T10:23:36.380Z"
+    }
+  ]
+}
