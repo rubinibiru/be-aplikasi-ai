@@ -1,39 +1,29 @@
-// backend/controllers/userController.js
-const fs = require('fs');
-const path = require('path');
 const jwt = require('jsonwebtoken');
 
-const usersPath = path.join(__dirname, '../data/users.json');
-const SECRET_KEY = "secretkey"; // Harusnya di .env, tapi hardcode dulu gpp
+// --- DATABASE SEMENTARA (IN-MEMORY) ---
+// Karena Vercel tidak bisa tulis file (fs.write), kita simpan di variable saja.
+// Data ini akan reset kalau server restart/redeploy, tapi cukup untuk DEMO tugas.
 
-// Helper: Baca User dari File
-const loadUsers = () => {
-  try {
-    if (!fs.existsSync(usersPath)) {
-      // Kalau file belum ada, buat file baru dengan user default
-      const defaultUsers = [
-        { id: 1, username: "siswa1", password: "password123", name: "Siswa 1", level: "Siswa Aktif" }
-      ];
-      fs.writeFileSync(usersPath, JSON.stringify(defaultUsers, null, 2));
-      return defaultUsers;
-    }
-    const data = fs.readFileSync(usersPath, 'utf8');
-    return JSON.parse(data);
-  } catch (err) {
-    return [];
+let users = [
+  { 
+    id: 1, 
+    username: "siswa1", 
+    password: "password123", 
+    name: "Siswa 1", 
+    level: "Siswa Aktif" 
   }
-};
+];
 
-// Helper: Simpan User ke File
-const saveUsers = (users) => {
-  fs.writeFileSync(usersPath, JSON.stringify(users, null, 2));
-};
+const SECRET_KEY = "secretkey"; 
+
+// --- CONTROLLER ---
 
 exports.login = (req, res) => {
   const { username, password } = req.body;
-  const users = loadUsers();
 
+  // Cari user di variable array 'users', bukan load dari file
   const user = users.find(u => u.username === username && u.password === password);
+  
   if (!user) {
     return res.status(401).json({ message: "Username atau password salah" });
   }
@@ -49,7 +39,8 @@ exports.getProfile = (req, res) => {
   const token = authHeader.split(' ')[1];
   try {
     const decoded = jwt.verify(token, SECRET_KEY);
-    const users = loadUsers();
+    
+    // Cari user langsung dari variable memory
     const user = users.find(u => u.id === decoded.id);
     
     if (!user) return res.status(404).json({ message: "User tidak ditemukan" });
@@ -60,7 +51,6 @@ exports.getProfile = (req, res) => {
   }
 };
 
-// --- FITUR BARU: REGISTER ---
 exports.register = (req, res) => {
   const { name, username, password } = req.body;
 
@@ -68,25 +58,26 @@ exports.register = (req, res) => {
     return res.status(400).json({ message: "Semua data harus diisi!" });
   }
 
-  const users = loadUsers();
-
-  // Cek apakah username sudah dipakai
+  // Cek username di memory
   if (users.find(u => u.username === username)) {
     return res.status(400).json({ message: "Username sudah terpakai, coba yang lain." });
   }
 
   // Buat User Baru
   const newUser = {
-    id: users.length > 0 ? users[users.length - 1].id + 1 : 1, // Auto Increment ID
+    id: users.length > 0 ? users[users.length - 1].id + 1 : 1, 
     username,
-    password, // Di dunia nyata ini harus di-hash (enkripsi), tapi buat belajar gpp plain text
+    password, 
     name,
     level: "Siswa Baru",
     joinedAt: new Date().toISOString()
   };
 
+  // Simpan ke MEMORY (Push ke array)
+  // Tidak pakai fs.writeFileSync lagi
   users.push(newUser);
-  saveUsers(users);
+
+  console.log("User baru terdaftar (di memory):", newUser.username);
 
   res.status(201).json({ success: true, message: "Registrasi berhasil!", user: newUser });
 };
