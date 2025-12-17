@@ -96,3 +96,5 @@ app.use('/refleksi', refleksiRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// TAMBAHKAN BARIS INI (Pancingan supaya Vercel bangun)
+// Update pancingan: Bismillah lancar jaya!
