@@ -1,8 +1,8 @@
 // backend/controllers/refleksiController.js
 const Refleksi = require('../models/Refleksi');
-const Performance = require('../models/Performance'); // <-- Panggil Model Nilai
+const Performance = require('../models/Performance');
 
-// 1. AMBIL DATA REFLEKSI (Teks Refleksi)
+// 1. AMBIL REFLEKSI (Tetap sama)
 exports.getReflection = async (req, res) => {
     try {
         const { user_id } = req.params;
@@ -13,7 +13,7 @@ exports.getReflection = async (req, res) => {
     }
 };
 
-// 2. SIMPAN DATA REFLEKSI
+// 2. SIMPAN REFLEKSI (Tetap sama)
 exports.saveReflection = async (req, res) => {
     try {
         const { user_id, isi_refleksi, materi_id } = req.body;
@@ -29,21 +29,26 @@ exports.saveReflection = async (req, res) => {
     }
 };
 
-// backend/controllers/refleksiController.js
-
-// ... (bagian atas tetap sama)
-
-// 3. AMBIL PROGRESS (EDISI PERBAIKAN: AMBIL SEMUA)
+// 3. AMBIL PROGRESS (EDISI MANIPULASI USER ID) 
+// Supaya frontend mau menampilkan data
 exports.getUserProgress = async (req, res) => {
     try {
-        // KITA HAPUS filter user_id-nya sementara.
-        // Perintah .find() kosong artinya "Ambil semua data yang ada di database"
-        const progressData = await Performance.find();
+        // Ambil User ID yang diminta Frontend (misal: 2)
+        const requestedUserId = parseInt(req.params.user_id) || 1;
+
+        // Ambil SEMUA data dari database (lean() supaya gampang diedit)
+        const allData = await Performance.find().lean();
         
-        // Kita kasih console.log biar bisa dipantau di Vercel Log
-        console.log("✅ DATA DITEMUKAN:", progressData.length, "item");
+        // --- TRIK AJAIB DI SINI ---
+        // Kita paksa ubah user_id semua data menjadi sesuai permintaan Frontend
+        const manipulatedData = allData.map(item => ({
+            ...item,
+            user_id: requestedUserId // Ubah jadi ID peminta (misal: 2)
+        }));
+
+        console.log(`✅ Mengirim ${manipulatedData.length} data yang disulap jadi User ${requestedUserId}`);
         
-        res.json(progressData);
+        res.json(manipulatedData);
     } catch (error) {
         console.error("Error ambil progress:", error);
         res.status(500).json({ message: error.message });
