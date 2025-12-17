@@ -29,17 +29,19 @@ exports.saveReflection = async (req, res) => {
     }
 };
 
-// 3. [BARU] AMBIL PROGRESS (Riwayat Nilai Soal)
-// Ini yang dibutuhkan halaman Refleksi kamu!
+// backend/controllers/refleksiController.js
+
+// ... (bagian atas tetap sama)
+
+// 3. AMBIL PROGRESS (EDISI PERBAIKAN: AMBIL SEMUA)
 exports.getUserProgress = async (req, res) => {
     try {
-        const { user_id } = req.params;
+        // KITA HAPUS filter user_id-nya sementara.
+        // Perintah .find() kosong artinya "Ambil semua data yang ada di database"
+        const progressData = await Performance.find();
         
-        // Cari data nilai dari tabel Performance
-        // Kita ubah user_id jadi Number karena di Performance model tipenya Number
-        const userIdInt = parseInt(user_id) || 1;
-        
-        const progressData = await Performance.find({ user_id: userIdInt });
+        // Kita kasih console.log biar bisa dipantau di Vercel Log
+        console.log("✅ DATA DITEMUKAN:", progressData.length, "item");
         
         res.json(progressData);
     } catch (error) {
