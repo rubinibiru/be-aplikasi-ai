@@ -7,6 +7,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use(cors({
+    origin: 'https://link-netlify-temanmu.netlify.app', // Ganti dengan link temanmu
+    optionsSuccessStatus: 200
+}));
+
 // Import data JSON (Untuk Materi masih pakai cara manual temanmu)
 const dataMateri = require('./data/materi.json'); 
 const materi = dataMateri.materi || dataMateri;
